@@ -2,7 +2,6 @@
 
 import logging
 import os
-import smtplib
 import re
 import urlparse
 from cStringIO import StringIO
