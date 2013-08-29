@@ -7,14 +7,7 @@ $ python train_spam.py /path/to/spam.pkl
 blah blah blah^D
 """
 import sys
-from ConfigParser import SafeConfigParser as ConfigParser, \
-        NoSectionError, NoOptionError
 from spambayes.storage import PickledClassifier
-
-
-config = ConfigParser()
-with open("/etc/email_gateway.cfg") as fp:
-    config.readfp(fp)
 
 
 def main():
