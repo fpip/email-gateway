@@ -6,19 +6,18 @@ import re
 import urlparse
 from cStringIO import StringIO
 from email.mime.text import MIMEText
-from ConfigParser import SafeConfigParser as ConfigParser, \
-        NoSectionError, NoOptionError
+from ConfigParser import NoSectionError, NoOptionError
 from spambayes.storage import PickledClassifier
 
+from get_config import config
+
+
 log = logging.getLogger("email_gateway")
-handler = logging.FileHandler("/var/log/webapps/email_gateway.log")
+default_log_filename = "/var/log/webapps/email_gateway.log"
+log_filename = config.get("log", default_log_filename)
+handler = logging.FileHandler(log_filename)
 log.addHandler(handler)
 log.setLevel(logging.DEBUG)
-
-
-config = ConfigParser()
-with open("/etc/email_gateway.cfg") as fp:
-    config.readfp(fp)
 
 
 def send_message(text, subject, to, from_email):
