@@ -41,4 +41,4 @@ for index, message in box.items():
         filename = "./spam/" + filename
     else:
         filename = "./ham/" + filename
-    open(filename, 'wb').write(message)k
+    open(filename, 'wb').write(message)
